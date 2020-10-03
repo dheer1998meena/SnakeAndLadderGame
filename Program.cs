@@ -11,29 +11,35 @@ namespace SnakeLadder
             const int NO_PLAY = 1;
             const int LADDER = 2;
             const int SNAKE = 3;
-            int currentPostion = startPosition;
+            int currentPosition = startPosition;
+            int winningPosition = 100;
+            int Moves = 0;
+            Random random = new Random();
 
-            Random die = new Random();
-            int dieNum = die.Next(1, 7);
-            Console.WriteLine("Die Number is {0}", dieNum);
-            Random opt = new Random();
-            int option = opt.Next(1, 4);
-            Console.WriteLine("Option is {0}", option);
-
-            switch (option)
+            while (currentPosition < winningPosition)
             {
-                case NO_PLAY:
-                    break;
-                case LADDER:
-                    currentPostion += dieNum;
-                    break;
-                case SNAKE:
-                    currentPostion -= dieNum;
-                    break;
-                default:
-                    break;
+                int dieNum = random.Next(1, 7);
+                Console.WriteLine("Die Number is {0}", dieNum);
+                int option = random.Next(1, 4);
+                Console.WriteLine("Option is {0}", option);
+                switch (option)
+                {
+                    case NO_PLAY:
+                        break;
+                    case LADDER:
+                        currentPosition += dieNum;
+                        break;
+                    case SNAKE:
+                        if (currentPosition < startPosition)
+                            currentPosition = startPosition;
+                        break;
+                    default:
+                        break;
+                }
+                Moves++;
+                Console.WriteLine("Current Position is {0}", currentPosition);
             }
-            Console.WriteLine("Current Position is {0}", currentPostion);
+           Console.WriteLine("Number Of Moves Used {0}", Moves);
         }
     }
     
