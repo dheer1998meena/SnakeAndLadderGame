@@ -41,8 +41,8 @@ namespace SnakeLadder
                 }
                 Moves++;
                 Console.WriteLine("Current Position is {0}", currentPosition);
+                Console.WriteLine("Number Of MOves Used {0}", Moves);
             } 
-            Console.WriteLine("Number Of MOves Used {0}", Moves);
         }
     }
     
