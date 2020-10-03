@@ -14,6 +14,7 @@ namespace SnakeLadder
             int currentPosition = startPosition;
             int winningPosition = 100;
             int Moves = 0;
+
             Random random = new Random();
 
             while (currentPosition < winningPosition)
@@ -27,9 +28,11 @@ namespace SnakeLadder
                     case NO_PLAY:
                         break;
                     case LADDER:
-                        currentPosition += dieNum;
+                        if (currentPosition + dieNum <= winningPosition)
+                            currentPosition += dieNum;
                         break;
                     case SNAKE:
+                        currentPosition -= dieNum;
                         if (currentPosition < startPosition)
                             currentPosition = startPosition;
                         break;
@@ -38,9 +41,10 @@ namespace SnakeLadder
                 }
                 Moves++;
                 Console.WriteLine("Current Position is {0}", currentPosition);
-            }
-           Console.WriteLine("Number Of Moves Used {0}", Moves);
+            } 
+            Console.WriteLine("Number Of MOves Used {0}", Moves);
         }
     }
+    
     
 }
